@@ -1,1 +1,0 @@
-# dailysmart3.0
