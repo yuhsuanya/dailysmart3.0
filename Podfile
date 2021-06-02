@@ -7,7 +7,7 @@ target 'test' do
 pod 'CVCalendar', '~> 1.7.0'
   # Pods for test
   
-pod 'CalendarKit', '~> 0.14.7'
+pod 'CalendarKit', :git => 'https://github.com/alicevvv/CalendarKit.git'
 pod 'JTAppleCalendar', '~> 8.0.0'
 pod 'AYPopupPickerView', '~> 1.2'
 pod 'RealmSwift', '~> 10.7.2'
