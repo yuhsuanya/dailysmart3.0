@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import RealmSwift
 //import PlaygroundSupport
 
 class AddTargetViewController: UIViewController, UIPageViewControllerDelegate, UIPageViewControllerDataSource, UITextFieldDelegate{
@@ -110,6 +111,7 @@ class AddTargetViewController: UIViewController, UIPageViewControllerDelegate, U
     var selectedIndex: Int = 0
     var quantifyController = UIViewController()
     var generalController = UIViewController()
+    var myGTarget : UITextField!
     override func viewDidLoad() {
         super.viewDidLoad()
         //設置日期樣式
@@ -142,12 +144,10 @@ class AddTargetViewController: UIViewController, UIPageViewControllerDelegate, U
         let nextButton = UIButton(frame: CGRect(x: 0, y: 0, width: 100, height: 40))
         nextButton.setTitle("下一步", for: .normal)
         nextButton.setTitleColor(UIColor.gray, for: UIControl.State.normal)
-        nextButton.addTarget(nil, action: #selector(AddEventController.goBack), for: .touchUpInside)
+        nextButton.addTarget(nil, action: #selector(AddTargetViewController.saveGoal), for: .touchUpInside)
         nextButton.center = CGPoint(x: 371, y: 40)
         nextButton.tintColor = smartDarkGold
-        if myQTarget.text != "" {
-            nextButton.addTarget(nil, action: #selector(AddTargetViewController.goBack), for: .touchUpInside)
-        }
+        
         self.view.addSubview(nextButton)
         segmentedControl.insertSegment(withTitle: "量化目標", at: 0, animated: true)
         segmentedControl.insertSegment(withTitle: "一般目標", at: 1, animated: true)
@@ -212,7 +212,7 @@ class AddTargetViewController: UIViewController, UIPageViewControllerDelegate, U
         viewController1.view.addSubview(myImageView)
         viewController1.view.addSubview(myFinalGoal)
         
-        let myGTarget = UITextField(frame: CGRect(x: 0, y: 0, width: 380, height: 45))
+        myGTarget = UITextField(frame: CGRect(x: 0, y: 0, width: 380, height: 45))
         let GTargetFont:UIFont = UIFont.systemFont(ofSize: 20)
         myGTarget.font = GTargetFont
         myGTarget.center = CGPoint(x: 207, y: 50)
@@ -357,6 +357,29 @@ class AddTargetViewController: UIViewController, UIPageViewControllerDelegate, U
         
         pageViewControl.setViewControllers([viewControllerArr[0]], direction: .forward, animated: false)
         
+    }
+    
+    @objc func saveGoal(){
+        if (myGTarget.text != "" ){
+            let content = myGTarget.text!
+            print(content)
+            let goaldata = goaldata0()
+            goaldata.content = content
+            
+            let realm = try! Realm()
+            try! realm.write{
+                realm.add(goaldata)
+            }
+            print("relam folder here:")
+            print(realm.configuration.fileURL!.deletingLastPathComponent().path)
+            goBack()
+        }
+        else{
+            let controller = UIAlertController(title: "請輸入目標名稱", message: " ", preferredStyle: .alert)
+               let okAction = UIAlertAction(title: "好", style: .default, handler: nil)
+               controller.addAction(okAction)
+               present(controller, animated: true, completion: nil)
+        }
     }
 }
 
