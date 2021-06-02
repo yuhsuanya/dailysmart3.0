@@ -29,6 +29,8 @@ class TodayController: DayViewController {
     var cardCheck: UIButton!
     var generatedEvents = [EventDescriptor]()
     var alreadyGeneratedSet = Set<Date>()
+    var content : String!
+    var cardsdata = [UIView]()
     
 
     override func loadView() {
@@ -52,6 +54,9 @@ class TodayController: DayViewController {
         self.cardArea = UIView(frame: CGRect(x:0,y:60,width: 415,height: 275))
         self.cardArea.backgroundColor = UIColor(red:252/255, green:252/255, blue:252/255, alpha:1.0)
         
+        
+//        readData()
+        var addView = readData()
          cardScrollView = UIScrollView(frame: CGRect(x: 20, y: 70, width: 395, height: 210))
             //    cardScrollView.backgroundColor = .black
         //        cardScrollView.frame = CGRect(x: 20, y: 70, width: 395, height: 230)
@@ -70,7 +75,7 @@ class TodayController: DayViewController {
                 
                 cardTitle = UILabel(frame: CGRect(x: 20, y: 10, width: 310, height: 40))
                 cardTitle.textColor = smartDarkBlue
-                cardTitle.text = "健身球"
+                cardTitle.text = content //"健身球"
                 cardTitle.font = cardTitle.font.withSize(20)
                 
                 cardTime = UILabel(frame: CGRect(x: 20, y: 50, width: 310, height: 40))
@@ -144,6 +149,7 @@ class TodayController: DayViewController {
         myButton.addTarget(nil, action: #selector(TodayController.goDetail), for: .touchUpInside)
         myButton.center = CGPoint(x: 355, y: 340)
         
+        
         self.view.addSubview(cardArea)
         self.view.addSubview(whiteBg)
         self.view.addSubview(myButton)
@@ -156,6 +162,9 @@ class TodayController: DayViewController {
         cardScrollView.addSubview(cardProgressLabel)
         cardScrollView.addSubview(cardPercent)
         cardScrollView.addSubview(cardCheck)
+        print("上面的這邊加加")
+        print(addView)
+        cardScrollView.addSubview(addView)
               
         //navigation
         navigationController?.navigationBar.isTranslucent = false
@@ -180,25 +189,27 @@ class TodayController: DayViewController {
         self.navigationController?.navigationBar.layer.shadowOffset = CGSize(width: 0, height: 2.0)
         self.navigationController?.navigationBar.layer.shadowRadius = 2
         
+        dayView.autoScrollToFirstEvent = true
+        
         //CalendarKit 改Style
-        var Style = CalendarStyle()
-        Style.header.backgroundColor = UIColor(red:252/255, green:252/255, blue:252/255, alpha:1.0)
-        Style.header.daySelector.activeTextColor = UIColor.white
-        Style.header.daySelector.selectedBackgroundColor = smartDarkGold //黃色
-        Style.header.daySelector.weekendTextColor = UIColor(red:25.0/255, green:52.0/255, blue:70.0/255, alpha:1.0)  //深藍
-        Style.header.daySelector.inactiveTextColor = smartDarkBlue
-        Style.header.daySelector.todayInactiveTextColor = smartDarkBlue
-        Style.header.daySelector.todayActiveBackgroundColor = smartDarkGold
-        Style.header.daySymbols.weekendColor = UIColor(red:25.0/255, green:52.0/255, blue:70.0/255, alpha:1.0)
-        Style.header.daySymbols.weekDayColor = UIColor(red:25.0/255, green:52.0/255, blue:70.0/255, alpha:1.0)
-        Style.timeline.timeIndicator.color = UIColor(red:239.0/255, green:208.0/255, blue:139.0/255, alpha:1.0)
-        Style.timeline.timeColor = UIColor(red:25.0/255, green:52.0/255, blue:70.0/255, alpha:1.0)
-        Style.timeline.separatorColor = smartDarkBlue
-        Style.timeline.backgroundColor = UIColor.white
-        Style.timeline.dateStyle = .twentyFourHour
-        Style.timeline.timeIndicator.dateStyle = .twentyFourHour
-        Style.timeline.verticalInset = 280
-        dayView.updateStyle(Style)
+//        var Style = CalendarStyle()
+//        Style.header.backgroundColor = UIColor(red:252/255, green:252/255, blue:252/255, alpha:1.0)
+//        Style.header.daySelector.activeTextColor = UIColor.white
+//        Style.header.daySelector.selectedBackgroundColor = smartDarkGold //黃色
+//        Style.header.daySelector.weekendTextColor = UIColor(red:25.0/255, green:52.0/255, blue:70.0/255, alpha:1.0)  //深藍
+//        Style.header.daySelector.inactiveTextColor = smartDarkBlue
+//        Style.header.daySelector.todayInactiveTextColor = smartDarkBlue
+//        Style.header.daySelector.todayActiveBackgroundColor = smartDarkGold
+//        Style.header.daySymbols.weekendColor = UIColor(red:25.0/255, green:52.0/255, blue:70.0/255, alpha:1.0)
+//        Style.header.daySymbols.weekDayColor = UIColor(red:25.0/255, green:52.0/255, blue:70.0/255, alpha:1.0)
+//        Style.timeline.timeIndicator.color = UIColor(red:239.0/255, green:208.0/255, blue:139.0/255, alpha:1.0)
+//        Style.timeline.timeColor = UIColor(red:25.0/255, green:52.0/255, blue:70.0/255, alpha:1.0)
+//        Style.timeline.separatorColor = smartDarkBlue
+//        Style.timeline.backgroundColor = UIColor.white
+//        Style.timeline.dateStyle = .twentyFourHour
+//        Style.timeline.timeIndicator.dateStyle = .twentyFourHour
+//        Style.timeline.verticalInset = 280
+//        dayView.updateStyle(Style)
     }
     
     //add event
@@ -249,6 +260,88 @@ class TodayController: DayViewController {
         return events
     }
     
+    //黃色卡片讀資料
+    func readData() -> UIView{
+        let realm = try! Realm();
+        let title = realm.objects(goaldata0.self)
+        var card : UIView!
+        print("in readData: \(title[0].content)")
+        content = title[0].content
+        print(title.count)
+        reloadData()
+        let count = title.count
+        for index in 1..<count {
+                card = creatCard(str: title[index].content, i: index)
+        }
+        return card
+    }
+    
+    func creatCard(str:String,i:Int)->UIView{
+        let cardX = 370*i
+        var card : UIView!
+        card = UIView(frame:CGRect(x: cardX, y: 0, width: 350, height: 210))
+        card.backgroundColor = smartLightGold
+        card.layer.cornerRadius = 20
+        
+        let cardTitle = UILabel(frame: CGRect(x: 20, y: 10, width: 310, height: 40))
+        cardTitle.textColor = smartDarkBlue
+        cardTitle.text = str//title[index].content
+        cardTitle.font = cardTitle.font.withSize(20)
+        
+        let cardTime = UILabel(frame: CGRect(x: 20, y: 50, width: 310, height: 40))
+        cardTime.textColor = smartDarkBlue
+        cardTime.text = "下午 02:00-03:00"
+        cardTime.font = cardTime.font.withSize(16)
+        let cardSetTime = UIButton(frame: CGRect(x: 20, y: 100, width: 148, height: 44))
+        cardSetTime.backgroundColor = .white
+        cardSetTime.layer.cornerRadius = 6
+        cardSetTime.setTitle("設定時間", for: .normal)
+        cardSetTime.setTitleColor(smartDarkBlue, for: .normal)
+       // cardSetTime.titleLabel?.font = UIFont.systemFont(ofSize: 16)
+        cardSetTime.titleLabel?.font = UIFont.boldSystemFont(ofSize: 16)
+        cardSetTime.layer.shadowColor = UIColor.gray.cgColor
+        cardSetTime.layer.shadowRadius = 6
+        cardSetTime.layer.shadowOpacity = 0.4
+        cardSetTime.layer.shadowOffset = CGSize(width: 0, height: 2)
+        
+        let cardRecord = UIButton(frame: CGRect(x: 182, y: 100, width: 148, height: 44))
+        cardRecord.backgroundColor = .white
+        cardRecord.layer.cornerRadius = 6
+        cardRecord.setTitle("查看進度", for: .normal)
+        cardRecord.setTitleColor(smartDarkBlue, for: .normal)
+        cardRecord.titleLabel?.font = UIFont.boldSystemFont(ofSize: 16)
+        cardRecord.layer.shadowColor = UIColor.gray.cgColor
+        cardRecord.layer.shadowRadius = 6
+        cardRecord.layer.shadowOpacity = 0.4
+        cardRecord.layer.shadowOffset = CGSize(width: 0, height: 2)
+        
+        let cardProgressLabel = UILabel(frame: CGRect(x: 20, y: 160, width: 200, height: 14))
+        cardProgressLabel.text = "目前進度 (2/6)"
+        cardProgressLabel.font = cardProgressLabel.font.withSize(12)
+        cardProgressLabel.textColor = smartDarkBlue
+        
+        let cardPercent = UILabel(frame: CGRect(x: 240, y: 160, width: 35, height: 14))
+        cardPercent.text = "33%"
+        cardPercent.font = cardPercent.font.withSize(12)
+        cardPercent.textColor = smartDarkBlue
+        
+        let cardCheck = UIButton(frame: CGRect(x: 280, y: 150, width: 55, height: 55))
+       // cardCheck.backgroundColor = .black
+        cardCheck.layer.cornerRadius = 21
+        let cardGrayCheckimg = UIImage(named: "graycheck_btn@3x.png")
+        let cardGreenCheckimg = UIImage(named: "greencheck_btn@3x.png")
+        cardCheck.setBackgroundImage(cardGreenCheckimg, for: .selected)
+        cardCheck.setBackgroundImage(cardGrayCheckimg, for: .normal)
+        cardCheck.addTarget(self, action: #selector(TodayController.pressed), for: .touchUpInside)
+        
+        card.addSubview(cardTitle)
+        card.addSubview(cardTime)
+        card.addSubview(cardRecord)
+        card.addSubview(cardProgressLabel)
+        card.addSubview(cardPercent)
+        card.addSubview(cardCheck)
+        return card
+    }
 
 }
 

@@ -22,3 +22,8 @@ class eventDataList4 : Object{
     @objc dynamic var color :Int = 1
 }
 
+class goaldata0 : Object{
+    //標題
+    @objc dynamic var content = " "
+}
+
