@@ -10,6 +10,10 @@
 		43BD96F4F6CE2B4D1B017837 /* Pods_test.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 336DB90D59DC2D8DC8566DAC /* Pods_test.framework */; };
 		562E5303262ADEEC00A76504 /* graycheck_btn@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 562E5301262ADEEC00A76504 /* graycheck_btn@3x.png */; };
 		562E5304262ADEEC00A76504 /* greencheck_btn@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 562E5302262ADEEC00A76504 /* greencheck_btn@3x.png */; };
+		563D68F02668C706004A1C75 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 563D68EF2668C705004A1C75 /* Assets.xcassets */; };
+		563D68F42668C7C6004A1C75 /* CustomTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 563D68F32668C7C6004A1C75 /* CustomTableViewCell.swift */; };
+		563D68F72668C818004A1C75 /* QuantifyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 563D68F62668C818004A1C75 /* QuantifyViewController.swift */; };
+		563D68FA2668C858004A1C75 /* UnitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 563D68F92668C858004A1C75 /* UnitViewController.swift */; };
 		56D1F33D262566CB00B9FFFC /* eventData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56D1F33C262566CB00B9FFFC /* eventData.swift */; };
 		56D1F3442625676F00B9FFFC /* addEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56D1F3432625676F00B9FFFC /* addEvent.swift */; };
 		56D1F3482625678800B9FFFC /* selectDate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56D1F3472625678800B9FFFC /* selectDate.swift */; };
@@ -24,7 +28,6 @@
 		C64CFBA4252775D40037431F /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C64CFBA3252775D40037431F /* ViewController.swift */; };
 		C64CFBA7252775D40037431F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C64CFBA5252775D40037431F /* Main.storyboard */; };
 		C64CFBAA252775D40037431F /* test.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = C64CFBA8252775D40037431F /* test.xcdatamodeld */; };
-		C64CFBAC252775D70037431F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C64CFBAB252775D70037431F /* Assets.xcassets */; };
 		C64CFBAF252775D70037431F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C64CFBAD252775D70037431F /* LaunchScreen.storyboard */; };
 		C687A8862530B16000FA1C91 /* TodayController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C687A8852530B16000FA1C91 /* TodayController.swift */; };
 		C687A8882530B2AE00FA1C91 /* CalenderController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C687A8872530B2AE00FA1C91 /* CalenderController.swift */; };
@@ -42,6 +45,10 @@
 		336DB90D59DC2D8DC8566DAC /* Pods_test.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_test.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		562E5301262ADEEC00A76504 /* graycheck_btn@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "graycheck_btn@3x.png"; path = "../../../../../Downloads/graycheck_btn@3x.png"; sourceTree = "<group>"; };
 		562E5302262ADEEC00A76504 /* greencheck_btn@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "greencheck_btn@3x.png"; path = "../../../../../Downloads/greencheck_btn@3x.png"; sourceTree = "<group>"; };
+		563D68EF2668C705004A1C75 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = "../../../../../Downloads/修改的部分/Assets.xcassets"; sourceTree = "<group>"; };
+		563D68F32668C7C6004A1C75 /* CustomTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTableViewCell.swift; sourceTree = "<group>"; };
+		563D68F62668C818004A1C75 /* QuantifyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuantifyViewController.swift; sourceTree = "<group>"; };
+		563D68F92668C858004A1C75 /* UnitViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnitViewController.swift; sourceTree = "<group>"; };
 		56D1F33C262566CB00B9FFFC /* eventData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = eventData.swift; sourceTree = "<group>"; };
 		56D1F3432625676F00B9FFFC /* addEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = addEvent.swift; sourceTree = "<group>"; };
 		56D1F3472625678800B9FFFC /* selectDate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = selectDate.swift; sourceTree = "<group>"; };
@@ -58,7 +65,6 @@
 		C64CFBA3252775D40037431F /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		C64CFBA6252775D40037431F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		C64CFBA9252775D40037431F /* test.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = test.xcdatamodel; sourceTree = "<group>"; };
-		C64CFBAB252775D70037431F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C64CFBAE252775D70037431F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		C64CFBB0252775D70037431F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C687A8852530B16000FA1C91 /* TodayController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayController.swift; sourceTree = "<group>"; };
@@ -137,14 +143,17 @@
 				C64CFBA3252775D40037431F /* ViewController.swift */,
 				C687A8852530B16000FA1C91 /* TodayController.swift */,
 				F4E83183261F3ADD00D2884B /* AddTargetViewController.swift */,
+				563D68F32668C7C6004A1C75 /* CustomTableViewCell.swift */,
 				F4BB24FC26248B9C00B742C5 /* AddSubGFunction.swift */,
 				C6FD5D2C25FBBD9D0048317F /* DateCell.swift */,
 				C62A942B258E375D0033CC46 /* ColorSelect.swift */,
 				C687A8872530B2AE00FA1C91 /* CalenderController.swift */,
+				563D68F62668C818004A1C75 /* QuantifyViewController.swift */,
 				C687A8892530B2EF00FA1C91 /* TargetController.swift */,
+				563D68F92668C858004A1C75 /* UnitViewController.swift */,
 				C687A88B2530B32000FA1C91 /* SettingsController.swift */,
 				C64CFBA5252775D40037431F /* Main.storyboard */,
-				C64CFBAB252775D70037431F /* Assets.xcassets */,
+				563D68EF2668C705004A1C75 /* Assets.xcassets */,
 				C64CFBAD252775D70037431F /* LaunchScreen.storyboard */,
 				C64CFBB0252775D70037431F /* Info.plist */,
 				C64CFBA8252775D40037431F /* test.xcdatamodeld */,
@@ -227,9 +236,9 @@
 			files = (
 				C64CFBAF252775D70037431F /* LaunchScreen.storyboard in Resources */,
 				C6FD5D3626062D9C0048317F /* CalendarSectionHeaderView.xib in Resources */,
+				563D68F02668C706004A1C75 /* Assets.xcassets in Resources */,
 				C62A944A2590EB7F0033CC46 /* blue_BCircle@3x.png in Resources */,
 				562E5303262ADEEC00A76504 /* graycheck_btn@3x.png in Resources */,
-				C64CFBAC252775D70037431F /* Assets.xcassets in Resources */,
 				C62A94492590EB7F0033CC46 /* yellow_BCircle@3x.png in Resources */,
 				C62A944B2590EB7F0033CC46 /* pink_BCircle@3x.png in Resources */,
 				562E5304262ADEEC00A76504 /* greencheck_btn@3x.png in Resources */,
@@ -287,7 +296,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				563D68F42668C7C6004A1C75 /* CustomTableViewCell.swift in Sources */,
 				C687A88C2530B32000FA1C91 /* SettingsController.swift in Sources */,
+				563D68FA2668C858004A1C75 /* UnitViewController.swift in Sources */,
 				C64CFBA4252775D40037431F /* ViewController.swift in Sources */,
 				56D1F3442625676F00B9FFFC /* addEvent.swift in Sources */,
 				F4BB24FD26248B9C00B742C5 /* AddSubGFunction.swift in Sources */,
@@ -297,6 +308,7 @@
 				C687A88A2530B2EF00FA1C91 /* TargetController.swift in Sources */,
 				F4E83184261F3ADD00D2884B /* AddTargetViewController.swift in Sources */,
 				C6FD5D2D25FBBD9D0048317F /* DateCell.swift in Sources */,
+				563D68F72668C818004A1C75 /* QuantifyViewController.swift in Sources */,
 				56D1F33D262566CB00B9FFFC /* eventData.swift in Sources */,
 				C64CFBA0252775D40037431F /* AppDelegate.swift in Sources */,
 				56D1F3482625678800B9FFFC /* selectDate.swift in Sources */,
